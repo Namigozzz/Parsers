@@ -2,8 +2,6 @@ import org.w3c.dom.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +9,8 @@ public class Task2 {
     public static void main(String[] args) {
         String[] columnMapping = {"id", "firstName", "lastName", "country", "age"};
         List<Employee> list = parseXML("data.xml");
-        String json = listToJson(list);
-        writeString(json);
+        String json = Task1.listToJson(list);
+        Task1.writeString(json);
     }
 
     public static List<Employee> parseXML(String fileName) {
@@ -39,17 +37,5 @@ public class Task2 {
         }
 
         return employees;
-    }
-
-    public static void writeString(String json) {
-        try (FileWriter fileWriter = new FileWriter("data2.json")) {
-            fileWriter.write(json);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static String listToJson(List<Employee> list) {
-        return Task1.listToJson(list);
     }
 }
