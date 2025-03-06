@@ -10,7 +10,8 @@ public class Task2 {
         String[] columnMapping = {"id", "firstName", "lastName", "country", "age"};
         List<Employee> list = parseXML("data.xml");
         String json = Task1.listToJson(list);
-        Task1.writeString(json);
+        String outPutFileName = "data2.json";
+        Task1.writeString(json, outPutFileName);
     }
 
     public static List<Employee> parseXML(String fileName) {

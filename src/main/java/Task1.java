@@ -15,9 +15,10 @@ public class Task1 {
     public static void main(String[] args) {
         String[] columnMapping = {"id", "firstName", "lastName", "country", "age"};
         String fileName = "data.csv";
+        String outputFileName = "data.json";
         List<Employee> list = parseCSV(columnMapping, fileName);
         String json = listToJson(list);
-        writeString(json);
+        writeString(json, outputFileName);
     }
 
     public static List<Employee> parseCSV(String[] columnMapping, String fileName) {
@@ -37,8 +38,8 @@ public class Task1 {
         return null;
     }
 
-    public static void writeString(String json) {
-        try (FileWriter fileWriter = new FileWriter("data.json")) {
+    public static void writeString(String json, String outPutFileName) {
+        try (FileWriter fileWriter = new FileWriter(outPutFileName)) {
             fileWriter.write(json);
         } catch (IOException e) {
             e.printStackTrace();
